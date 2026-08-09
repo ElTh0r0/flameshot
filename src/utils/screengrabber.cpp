@@ -91,7 +91,7 @@ ScreenGrabber::PortalStatus ScreenGrabber::freeDesktopPortal(
                                                       const QVariantMap& map) {
         if (status == 0) {
             // Parse this as URI to handle unicode properly
-            QUrl uri = map.value("uri").toString();
+            QUrl uri(map.value("uri").toString());
             QString uriString = uri.toLocalFile();
             res = QPixmap(uriString);
             QFile imgFile(uriString);

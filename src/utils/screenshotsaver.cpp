@@ -125,7 +125,7 @@ void saveToClipboardMime(const QPixmap& capture, const QString& imageType)
     bool isLoaded =
       formattedPixmap.loadFromData(reinterpret_cast<uchar*>(array.data()),
                                    array.size(),
-                                   imageType.toUpper().toUtf8());
+                                   imageType.toUpper().toUtf8().constData());
     if (isLoaded) {
 
         auto* mimeData = new QMimeData();

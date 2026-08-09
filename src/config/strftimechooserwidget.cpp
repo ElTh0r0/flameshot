@@ -14,14 +14,11 @@ StrftimeChooserWidget::StrftimeChooserWidget(QWidget* parent)
     auto* layout = new QGridLayout(this);
     quint8 row = 0;
     quint8 col = 0;
-    QMapIterator<QString, QString> iterator(m_buttonData);
 
-    while (iterator.hasNext()) {
-        iterator.next();
-
-        QString variable = iterator.value();
+    for (auto it = m_buttonData.cbegin(); it != m_buttonData.cend(); ++it) {
+        QString variable = it.value();
         auto* button = new QPushButton(this);
-        button->setText(tr(iterator.key().toStdString().data()));
+        button->setText(tr(it.key().toStdString().data()));
         button->setToolTip(variable);
         button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         button->setMinimumHeight(25);
