@@ -101,8 +101,11 @@ ScreenGrabber::PortalStatus ScreenGrabber::freeDesktopPortal(
     };
 
     // prevent racy situations and listen before calling screenshot
-    QMetaObject::Connection conn = QObject::connect(
-      request, &org::freedesktop::portal::Request::Response, onPortalResponse);
+    QMetaObject::Connection conn =
+      QObject::connect(request,
+                       &org::freedesktop::portal::Request::Response,
+                       this,
+                       onPortalResponse);
 
     bool timedOut = false;
     QTimer timeout;

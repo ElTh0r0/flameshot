@@ -233,7 +233,8 @@ ConfigHandler::ConfigHandler()
         ensureFileWatched();
         QObject::connect(m_configWatcher.data(),
                          &QFileSystemWatcher::fileChanged,
-                         [](const QString& fileName) {
+                         this,
+                         [this](const QString& fileName) {
                              emit getInstance()->fileChanged();
 
                              if (QFile(fileName).exists()) {

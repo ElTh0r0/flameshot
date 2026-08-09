@@ -450,9 +450,10 @@ void GeneralConf::initShowStartupLaunchMessage()
          "taking a screenshot"));
     m_scrollAreaLayout->addWidget(m_showStartupLaunchMessage);
 
-    connect(m_showStartupLaunchMessage, &QCheckBox::clicked, [](bool checked) {
-        ConfigHandler().setShowStartupLaunchMessage(checked);
-    });
+    connect(
+      m_showStartupLaunchMessage, &QCheckBox::clicked, this, [](bool checked) {
+          ConfigHandler().setShowStartupLaunchMessage(checked);
+      });
 }
 
 void GeneralConf::initShowQuitPrompt()
@@ -463,7 +464,7 @@ void GeneralConf::initShowQuitPrompt()
       tr("Show the confirmation prompt before ESC quit"));
     m_scrollAreaLayout->addWidget(m_showQuitPrompt);
 
-    connect(m_showQuitPrompt, &QCheckBox::clicked, [](bool checked) {
+    connect(m_showQuitPrompt, &QCheckBox::clicked, this, [](bool checked) {
         ConfigHandler().setShowQuitPrompt(checked);
     });
 }
@@ -476,10 +477,12 @@ void GeneralConf::initPredefinedColorPaletteLarge()
       tr("Use a large predefined color palette"));
     m_scrollAreaLayout->addWidget(m_predefinedColorPaletteLarge);
 
-    connect(
-      m_predefinedColorPaletteLarge, &QCheckBox::clicked, [](bool checked) {
-          ConfigHandler().setPredefinedColorPaletteLarge(checked);
-      });
+    connect(m_predefinedColorPaletteLarge,
+            &QCheckBox::clicked,
+            this,
+            [](bool checked) {
+                ConfigHandler().setPredefinedColorPaletteLarge(checked);
+            });
 }
 void GeneralConf::initCopyOnDoubleClick()
 {
@@ -488,7 +491,7 @@ void GeneralConf::initCopyOnDoubleClick()
       tr("Enable Copy to clipboard on Double Click"));
     m_scrollAreaLayout->addWidget(m_copyOnDoubleClick);
 
-    connect(m_copyOnDoubleClick, &QCheckBox::clicked, [](bool checked) {
+    connect(m_copyOnDoubleClick, &QCheckBox::clicked, this, [](bool checked) {
         ConfigHandler().setCopyOnDoubleClick(checked);
     });
 }
@@ -500,7 +503,7 @@ void GeneralConf::initCopyAndCloseAfterUpload()
       tr("Copy URL after uploading was successful"));
     m_scrollAreaLayout->addWidget(m_copyURLAfterUpload);
 
-    connect(m_copyURLAfterUpload, &QCheckBox::clicked, [](bool checked) {
+    connect(m_copyURLAfterUpload, &QCheckBox::clicked, this, [](bool checked) {
         ConfigHandler().setCopyURLAfterUpload(checked);
     });
 }
@@ -701,7 +704,7 @@ void GeneralConf::initCopyPathAfterSave()
     m_copyPathAfterSave->setToolTip(tr("Copy the file path to clipboard after "
                                        "the file is saved"));
     m_scrollAreaLayout->addWidget(m_copyPathAfterSave);
-    connect(m_copyPathAfterSave, &QCheckBox::clicked, [](bool checked) {
+    connect(m_copyPathAfterSave, &QCheckBox::clicked, this, [](bool checked) {
         ConfigHandler().setCopyPathAfterSave(checked);
     });
 }
@@ -714,7 +717,7 @@ void GeneralConf::initAntialiasingPinZoom()
       tr("After zooming the pinned image, should the image get smoothened or "
          "stay pixelated"));
     m_scrollAreaLayout->addWidget(m_antialiasingPinZoom);
-    connect(m_antialiasingPinZoom, &QCheckBox::clicked, [](bool checked) {
+    connect(m_antialiasingPinZoom, &QCheckBox::clicked, this, [](bool checked) {
         ConfigHandler().setAntialiasingPinZoom(checked);
     });
 }
@@ -726,9 +729,10 @@ void GeneralConf::initUploadWithoutConfirmation()
     m_uploadWithoutConfirmation->setToolTip(
       tr("Upload image without confirmation"));
     m_scrollAreaLayout->addWidget(m_uploadWithoutConfirmation);
-    connect(m_uploadWithoutConfirmation, &QCheckBox::clicked, [](bool checked) {
-        ConfigHandler().setUploadWithoutConfirmation(checked);
-    });
+    connect(
+      m_uploadWithoutConfirmation, &QCheckBox::clicked, this, [](bool checked) {
+          ConfigHandler().setUploadWithoutConfirmation(checked);
+      });
 }
 
 const QString GeneralConf::chooseFolder(const QString& pathDefault)
@@ -763,7 +767,7 @@ void GeneralConf::initShowMagnifier()
                                    "screenshot area"));
 
     m_scrollAreaLayout->addWidget(m_showMagnifier);
-    connect(m_showMagnifier, &QCheckBox::clicked, [](bool checked) {
+    connect(m_showMagnifier, &QCheckBox::clicked, this, [](bool checked) {
         ConfigHandler().setShowMagnifier(checked);
     });
 }
@@ -773,7 +777,7 @@ void GeneralConf::initSquareMagnifier()
     m_squareMagnifier = new QCheckBox(tr("Square shaped magnifier"), this);
     m_squareMagnifier->setToolTip(tr("Make the magnifier to be square-shaped"));
     m_scrollAreaLayout->addWidget(m_squareMagnifier);
-    connect(m_squareMagnifier, &QCheckBox::clicked, [](bool checked) {
+    connect(m_squareMagnifier, &QCheckBox::clicked, this, [](bool checked) {
         ConfigHandler().setSquareMagnifier(checked);
     });
 }

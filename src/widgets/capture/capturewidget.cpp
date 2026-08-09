@@ -548,7 +548,7 @@ void CaptureWidget::initQuitPrompt()
     m_quitPrompt->move(position.topLeft());
     m_quitPrompt->hide();
 
-    QObject::connect(check, &QCheckBox::clicked, [](bool checked) {
+    QObject::connect(check, &QCheckBox::clicked, this, [](bool checked) {
         ConfigHandler().setShowQuitPrompt(!checked);
     });
 }

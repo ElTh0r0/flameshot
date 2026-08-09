@@ -404,7 +404,7 @@ bool Flameshot::resolveAnyConfigErrors()
         !confighandler.checkSemantics()) {
         auto* resolver = new ConfigResolver();
         QObject::connect(
-          resolver, &ConfigResolver::rejected, [resolver, &resolved]() {
+          resolver, &ConfigResolver::rejected, this, [resolver, &resolved]() {
               resolved = false;
               resolver->deleteLater();
               if (origin() == CLI) {
@@ -412,7 +412,7 @@ bool Flameshot::resolveAnyConfigErrors()
               }
           });
         QObject::connect(
-          resolver, &ConfigResolver::accepted, [resolver, &resolved]() {
+          resolver, &ConfigResolver::accepted, this, [resolver, &resolved]() {
               resolved = true;
               resolver->close();
               resolver->deleteLater();
